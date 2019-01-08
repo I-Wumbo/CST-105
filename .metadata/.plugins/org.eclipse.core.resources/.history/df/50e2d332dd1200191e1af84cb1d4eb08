@@ -1,0 +1,19 @@
+package introduction;
+
+import java.util.Scanner;
+
+public class Tests {
+	public static void main(String[] args) {
+		double radius;
+		double area;
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Please enter in the radius:");
+		radius = input.nextDouble();
+		area = Math.pow(radius, 2) * Math.PI;
+		
+		System.out.println("Area is:" + area);
+	}
+
+}
