@@ -1,3 +1,6 @@
+/**
+ * Author: Karl Albornoz. This work is my own.
+ */
 package exercise2;
 
 import java.util.Scanner;
