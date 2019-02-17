@@ -1,6 +1,7 @@
 package week7milestones;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class NFLPlayerManager {
 	private ArrayList<NFLPlayer> players = new ArrayList<>();
@@ -28,8 +29,15 @@ public class NFLPlayerManager {
 
 	// Method that adds 6 default players with all default data
 	private void createPlayers() {
+		Random rand = new Random();
+		int number;
 		for (int i = 0; i < 6; i++) {
-			players.add(new NFLPlayer());
+			number = rand.nextInt(2) + 1;
+			if (number == 1) {
+				players.add(new OffensivePlayer());
+				break;
+			}
+			players.add(new DefensivePlayer());
 		}
 	}
 
@@ -47,42 +55,5 @@ public class NFLPlayerManager {
 	@Override
 	public String toString() {
 		return "Players: " + "\n" + getPlayers();
-	}
-
-	public static void main(String[] args) {
-		ArrayList<NFLPlayer> playerList = new ArrayList<>();
-		playerList.add(new NFLPlayer("John Johnson", "QB", 76, 200, 3, 4, 1, 4, 0));
-		playerList.add(new NFLPlayer("Dennis Thompson", "Offense", 71, 0, 5, 1, 2, 0, 0));
-		playerList.add(new NFLPlayer("Phil Danson", "Defense", 74, 0, 0, 1, 3, 4, 16));
-		playerList.add(new NFLPlayer("Tim", "QB", 76, 150, 2, 3, 1, 4, 0));
-		playerList.add(new NFLPlayer("Robert", "Offense", 74, 0, 3, 3, 1, 0, 0));
-		playerList.add(new NFLPlayer("Darren", "Defense", 76, 0, 0, 0, 1, 4, 10));
-
-		NFLPlayer[] playerArray = { new NFLPlayer("John Johnson", "QB", 76, 200, 3, 4, 1, 4, 0),
-				new NFLPlayer("Dennis Thompson", "Offense", 71, 0, 5, 1, 2, 0, 0),
-				new NFLPlayer("Phil Danson", "Defense", 74, 0, 0, 1, 3, 4, 16),
-				new NFLPlayer("Tim", "QB", 76, 150, 2, 3, 1, 4, 0),
-				new NFLPlayer("Robert", "Offense", 74, 0, 3, 3, 1, 0, 0),
-				new NFLPlayer("Billy", "Defense", 76, 0, 0, 0, 1, 4, 10) };
-
-		// Test no arg constructor
-		NFLPlayerManager test = new NFLPlayerManager();
-		System.out.println(test);
-		System.out.println();
-
-		// Test arg constructor
-		NFLPlayerManager manager1 = new NFLPlayerManager(playerArray);
-		System.out.println(manager1);
-		System.out.println();
-
-		// Test set players
-		test.setPlayers(playerList);
-		System.out.println(test.getPlayers());
-		System.out.println();
-
-		// Test overload createplayers
-		test.createPlayers(playerArray);
-		System.out.println(test);
-
 	}
 }
